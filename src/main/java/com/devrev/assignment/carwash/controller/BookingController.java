@@ -33,7 +33,7 @@ public class BookingController {
         return new ResponseEntity<>(bookingService.getAllBookings(),HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/admin/booking/approval")
+    @PutMapping("/admin/booking/approval")
     public ResponseEntity<String> updateBooking(@RequestBody Booking booking){
         if (bookingService.updateBooking(booking)){
             return new ResponseEntity<>("Successfully Updated",HttpStatus.OK);

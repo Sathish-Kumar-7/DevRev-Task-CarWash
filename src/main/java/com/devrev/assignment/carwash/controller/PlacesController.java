@@ -29,15 +29,15 @@ public class PlacesController {
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Not Updated");
     }
 
-    @PostMapping("/admin/update/place")
+    @PutMapping("/admin/update/place")
     ResponseEntity<String> updatePlace(@RequestBody Places place){
         if(placesService.updatePlace(place))
-            return new ResponseEntity<>("Successfully Added Updated Place", HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("Successfully Updated Place", HttpStatus.ACCEPTED);
         else
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Place Doesn't Exist");
     }
 
-    @GetMapping("/user/search/place/{placeName}")
+    @GetMapping({"/user/search/place/{placeName}","admin/search/place/{placeName}"})
     ResponseEntity<List<Places>> getAllPlacesByName(@PathVariable("placeName") String placeName){
         return new ResponseEntity<>(placesService.getPlacesByName(placeName),HttpStatus.OK);
     }

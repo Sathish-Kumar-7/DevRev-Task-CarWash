@@ -29,10 +29,10 @@ public class BookingService {
                                 booking.getBookingDate().toString(),
                                 DateTimeFormatter.ofPattern("yyyy-MM-dd")
                         )).size() <= BookingMaxCount.maxBookingCount){
-            booking.setBookingDate(LocalDate.parse(
-                    booking.getBookingDate().toString(),
-                    DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            ));
+//            booking.setBookingDate(LocalDate.parse(
+//                    booking.getBookingDate().toString(),
+//                    DateTimeFormatter.ofPattern("yyyy-MM-dd")
+//            ));
             bookingRepo.save(booking);
             return true;
         }else
@@ -61,7 +61,7 @@ public class BookingService {
     }
 
     public List<Booking> getBookingsByPlace(String place) {
-        return bookingRepo.findBookingByPincode_PlaceName(place);
+        return bookingRepo.findBookingsByPincode_PlaceName(place);
     }
 
     public List<Booking> getBookingsByDate(String date) {

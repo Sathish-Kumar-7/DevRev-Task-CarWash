@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("carwash/")
+@RequestMapping("carwash/admin/")
 public class AdminController {
     @Autowired
     public final AdminService adminService;
@@ -22,7 +22,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @PostMapping("/admin/signup")
+    @PostMapping("/signup")
     public ResponseEntity<String> signUpNewAdmin(@RequestBody Admin admin){
         if (adminService.signUpAdmin(admin))
             return new ResponseEntity<String>("Admin Successfully Added", HttpStatus.OK);
@@ -30,12 +30,12 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Data");
     }
 
-    @GetMapping("/user/login")
+    @GetMapping("/login")
     public ResponseEntity<String> loginExistingUser(@RequestBody Admin admin){
         if (adminService.loginExistingAdmin(admin))
             return new ResponseEntity<String>("Login Successfully", HttpStatus.OK);
         else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Admin Doesn't Exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Username Or Password");
     }
 
 }

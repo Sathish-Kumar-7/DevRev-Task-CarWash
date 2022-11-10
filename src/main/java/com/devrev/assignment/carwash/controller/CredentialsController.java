@@ -29,7 +29,7 @@ public class CredentialsController {
         if (credentialsService.signUpNewUser(credentials))
             return new ResponseEntity<String>("User Successfully Added", HttpStatus.OK);
         else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Data");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Input");
     }
 
     @GetMapping("/user/login")
@@ -37,7 +37,7 @@ public class CredentialsController {
         if (credentialsService.loginExistingUser(credentials))
             return new ResponseEntity<String>("Login Successfully", HttpStatus.OK);
         else
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Doesn't Exist");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Username Or Password");
     }
 
 }

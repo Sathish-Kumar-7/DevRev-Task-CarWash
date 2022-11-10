@@ -12,11 +12,13 @@ import java.util.List;
 
 @Repository
 public interface BookingRepo extends JpaRepository<Booking,Long> {
+
     List<Booking> findAllBookingsByBookingDate(LocalDate date);
 
     List<Booking> findBookingByCustomerId(Credentials id);
 
     List<Booking> findBookingByBookingDate(LocalDate date);
-    List<Booking> findBookingByPincode_PlaceName(String place);
+
+    List<Booking> findBookingsByPincode_PlaceName(String place);
 
 }
